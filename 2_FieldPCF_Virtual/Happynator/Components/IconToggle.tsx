@@ -38,7 +38,7 @@ export interface IIconToggleProps {
     labelOn : string;
     labelOff : string;
     value: boolean | undefined;
-    onChange: (value: boolean | undefined) => void;
+    onChange ?: (value: boolean | undefined) => void;
 }
 
 export const IconToggle = React.memo(({iconOn, iconOff, colorOn, colorOff, labelOn, labelOff, value, onChange}: IIconToggleProps) => {
