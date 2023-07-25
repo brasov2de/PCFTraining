@@ -1,3 +1,4 @@
+/* eslint-disable react/display-name */
 import * as React from 'react';
 import {Icon} from '@fluentui/react/lib/Icon';
 import { Label } from '@fluentui/react/lib/Label';
@@ -40,7 +41,7 @@ export interface IIconToggleProps {
     onChange: (value: boolean | undefined) => void;
 }
 
-export const IconToggle = ({iconOn, iconOff, colorOn, colorOff, labelOn, labelOff, value, onChange}: IIconToggleProps) => {
+export const IconToggle = React.memo(({iconOn, iconOff, colorOn, colorOff, labelOn, labelOff, value, onChange}: IIconToggleProps) => {
     const changeValue = React.useCallback(() => {
         onChange(!value);
     }, [value]);
@@ -50,4 +51,4 @@ export const IconToggle = ({iconOn, iconOff, colorOn, colorOff, labelOn, labelOf
         </div>
         <Label>{value===true ? labelOn : labelOff}</Label>
     </div>)
-}
+})

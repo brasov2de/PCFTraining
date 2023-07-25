@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <manifest>
-  <control namespace="Dianamics" constructor="Happynator" version="0.0.1" display-name-key="Happynator" description-key="Happynator description" control-type="virtual" >
+  <control namespace="Dianamics" constructor="Happynator" version="0.0.2" display-name-key="Happynator" description-key="Happynator description" control-type="virtual" >
   
     <external-service-usage enabled="false">
       <!--UNCOMMENT TO ADD EXTERNAL DOMAINS
@@ -10,6 +10,9 @@
     </external-service-usage>
     <!-- property node identifies a specific, configurable piece of data that the control expects from CDS -->
     <property name="sampleProperty" display-name-key="Property_Display_Key" description-key="Property_Desc_Key" of-type="TwoOptions" usage="bound" required="true" />
+    <property name="iconOn" display-name-key="IconOn" description-key="IconOn" of-type="SingleLine.Text" usage="input" />
+    <property name="iconOff" display-name-key="IconOff" description-key="IconOff" of-type="SingleLine.Text" usage="input" />
+    
    
     <resources>
       <code path="index.ts" order="1"/>

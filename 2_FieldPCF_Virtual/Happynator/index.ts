@@ -33,6 +33,8 @@ export class Happynator implements ComponentFramework.ReactControl<IInputs, IOut
         this.notifyOutputChanged();
     }
 
+
+    //icons: https://developer.microsoft.com/en-us/fluentui#/styles/web/icons
     /**
      * Called when any value in the property bag has changed. This includes field values, data-sets, global values such as container height and width, offline status, control metadata values such as label, visible, etc.
      * @param context The entire property bag available to control via Context Object; It contains values as set up by the customizer mapped to names defined in the manifest, as well as utility functions
@@ -41,12 +43,12 @@ export class Happynator implements ComponentFramework.ReactControl<IInputs, IOut
     public updateView(context: ComponentFramework.Context<IInputs>): React.ReactElement {
         const options = context.parameters.sampleProperty.attributes?.Options;
         const props: IIconToggleProps = { 
-            colorOn : options?.[1].Color ?? "lightgreen", 
-            colorOff : options?.[0].Color ?? "yellow", 
+            colorOn : options?.[1].Color ?? "green", 
+            colorOff : options?.[0].Color ?? "red", 
             labelOn : options?.[1].Label ?? "Happy",
             labelOff : options?.[0].Label ?? "Sad",
-            iconOn : "Emoji2", 
-            iconOff : "Sad", 
+            iconOn : context.parameters.iconOn.raw ?? "Emoji2", 
+            iconOff : context.parameters.iconOff.raw ?? "Sad", 
             value : context.parameters.sampleProperty.raw || false,
             onChange : this.onChange.bind(this) 
         };
