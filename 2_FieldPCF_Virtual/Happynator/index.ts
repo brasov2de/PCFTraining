@@ -75,3 +75,8 @@ export class Happynator implements ComponentFramework.ReactControl<IInputs, IOut
         // Add code to cleanup control if necessary
     }
 }
+
+
+//FiddlerAutoresponder 
+//REGEX:(.*?)(\/css)?(\/|cc_)Dianamics.Happynator.(?'path')
+//2_FieldPCF_Virtual\out\controls\Happynator\$2\${path}
