@@ -32,7 +32,10 @@ export class HappynatorGrid implements ComponentFramework.ReactControl<IInputs, 
      * @returns ReactElement root react element for the control
      */
     public updateView(context: ComponentFramework.Context<IInputs>): React.ReactElement {
-        const props: IHappynatorGridProps = { dataset: context.parameters.dataset};
+        const props: IHappynatorGridProps = { 
+            dataset: context.parameters.dataset, 
+            isCanvas : context.parameters.isCanvas.raw === "true",
+        };
         return React.createElement(
             HappynatorGridComponent, props
         );
