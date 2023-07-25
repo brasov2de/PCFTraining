@@ -43,7 +43,7 @@ export interface IIconToggleProps {
 
 export const IconToggle = React.memo(({iconOn, iconOff, colorOn, colorOff, labelOn, labelOff, value, onChange}: IIconToggleProps) => {
     const changeValue = React.useCallback(() => {
-        onChange(!value);
+        onChange && onChange(!value);
     }, [value]);
     return (<div className={iconContainerClass} onClick={changeValue}>
         <div style={{width:"30px"}}>
