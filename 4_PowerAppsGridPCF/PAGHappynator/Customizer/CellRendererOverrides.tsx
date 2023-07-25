@@ -8,7 +8,7 @@ export const cellRendererOverrides= {
         const column = rendererParams.colDefs[rendererParams.columnIndex];                         
         if(column.name==="diana_ishappy"){                      
             const onCellClicked = () => {
-                if(props.startEditing) props.startEditing();                  
+                if(props.startEditing) props.startEditing(!props.value);                  
             } 
         return (<IconToggle 
             iconOn="Emoji2" iconOff="Sad" colorOn="green" colorOff="red" 

@@ -9,10 +9,10 @@ export  const cellEditorOverrides: CellEditorOverrides = {
     ["TwoOptions"]: (defaultProps: CellEditorProps, rendererParams: GetEditorParams) => {     
       const column = rendererParams.colDefs[rendererParams.columnIndex];             
       if(column.name==="diana_ishappy"){        
-        const value  = defaultProps.value as string === "1" ? false : true;      
-        rendererParams.onCellValueChanged(value===true ? "1" : "0"); //autochange value on click
+        const value  = defaultProps.value;      
+       // rendererParams.onCellValueChanged(!value); //autochange value on click
         const onChange=() =>{          
-          rendererParams.onCellValueChanged(value ? "0" : "1");      
+          rendererParams.onCellValueChanged(!value);      
           rendererParams.stopEditing(false);
         }
         return (<IconToggle 
