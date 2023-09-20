@@ -32,7 +32,7 @@
     -->
     <resources>
       <code path="index.ts" order="1"/>
-      <css path="css/FancyImage.css"  />
+      <css path="CSS/FancyImage.css"  />
       <img path="Images/smiley.jpg"  />
       <!-- UNCOMMENT TO ADD MORE RESOURCES
       <css path="css/FancyImage.css" order="1" />

@@ -52,6 +52,12 @@ export class FancyImage implements ComponentFramework.StandardControl<IInputs, I
     public updateView(context: ComponentFramework.Context<IInputs>): void
     {
         console.log(context.updatedProperties);
+        if(context.updatedProperties.includes("fullscreen_open")){
+            this.isZoomed = true;
+        }
+        else if(context.updatedProperties.includes("fullscreen_close")){
+            this.isZoomed = false;
+        }
     }
 
     /**
