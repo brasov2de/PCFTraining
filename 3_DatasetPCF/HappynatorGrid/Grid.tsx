@@ -2,14 +2,15 @@
 import * as React from 'react';
 import { DetailsList } from '@fluentui/react/lib/DetailsList';
 import { IconToggle } from './Components/IconToggle';
+import { parseItems } from './Components/Utils';
 
 type DataSet = ComponentFramework.PropertyTypes.DataSet;
 
-export interface IHappynatorGridProps {
-  dataset: DataSet;
-  isCanvas : boolean;
+export interface IGridProps {
+  dataset: DataSet;  
 }
-export const HappynatorGridComponent = React.memo(({dataset, isCanvas}: IHappynatorGridProps) : JSX.Element => {
+
+const GridInternal = ({dataset}: IGridProps) : JSX.Element => {
 
   const columns = dataset.columns.sort((column1, column2) => column1.order - column2.order).map((column) => {
     const isHappyColumn = column.alias === 'happyProperty';
@@ -29,12 +30,7 @@ export const HappynatorGridComponent = React.memo(({dataset, isCanvas}: IHappyna
         value={item.raw.getValue(column.name)==true || item.raw.getValue(column.name)=="1" }   
         onChange={(value) =>{
           const record = item.raw;
-          if(isCanvas){
-            record.setValue(column.name, {Id: value === true ? true : false});
-          }
-          else{
-            record.setValue(column.name, value);          
-          }
+          record.setValue(column.name , value);
           record.save();
         }}               
         />
@@ -44,27 +40,15 @@ export const HappynatorGridComponent = React.memo(({dataset, isCanvas}: IHappyna
   });
 
   const [items, setItems] = React.useState<any[]>([]);
-
-  React.useEffect(() => {
-    const newItems = dataset.sortedRecordIds.map((id) => {
-      const record = dataset.records[id];
-      const attributes = dataset.columns.map((column) => {
-        return {                    
-          [column.name]: record.getFormattedValue(column.name)
-        }
-      });
-
-      return Object.assign({}, ...attributes,
-        {key: record.getRecordId(),
-        raw: record        
-        });
-    });    
-    setItems(newItems);
-  }, [dataset]);
+    React.useEffect(() => {
+        setItems(parseItems(dataset));
+    }, [dataset]);
 
 
   return (<DetailsList 
     items={items}
     columns={columns}
   />);
-});
+};
+
+export const Grid = React.memo(GridInternal);

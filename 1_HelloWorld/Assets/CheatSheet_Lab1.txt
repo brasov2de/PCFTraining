@@ -1,0 +1,5 @@
+pac pcf init -ns Dianamics -n SampleControl -t field
+npm install
+
+npm run build
+npm start watch

@@ -1,5 +1,5 @@
 import { IInputs, IOutputs } from "./generated/ManifestTypes";
-import { IHappynatorGridProps, HappynatorGridComponent } from "./HappynatorGrid";
+import { IGridProps, Grid } from "./Grid";
 import * as React from "react";
 
 export class HappynatorGrid implements ComponentFramework.ReactControl<IInputs, IOutputs> {
@@ -32,12 +32,11 @@ export class HappynatorGrid implements ComponentFramework.ReactControl<IInputs, 
      * @returns ReactElement root react element for the control
      */
     public updateView(context: ComponentFramework.Context<IInputs>): React.ReactElement {
-        const props: IHappynatorGridProps = { 
-            dataset: context.parameters.dataset, 
-            isCanvas : context.parameters.isCanvas.raw === "true",
+        const props: IGridProps = { 
+            dataset: context.parameters.dataset           
         };
         return React.createElement(
-            HappynatorGridComponent, props
+            Grid, props
         );
     }
 

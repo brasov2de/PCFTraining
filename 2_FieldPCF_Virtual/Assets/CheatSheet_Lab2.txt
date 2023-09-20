@@ -1,0 +1,39 @@
+Lab 2
+
+Harness
+_____________________________________
+pac pcf init -ns Dianamics -n Happynator -fw react
+npm install
+
+npm run build
+npm start watch
+
+FluentUI Icon names
+_____________________________________
+Happy
+Sad
+
+CheckMark
+Cancel
+
+
+
+
+pac cli
+_____________________________________________
+pac auth list
+pac org who
+pac org select -env <id>
+
+
+Upload
+_____________________________________________
+pac pcf push -pp <publisher_prefix>
+
+npm run build 
+pac pcf push -pp diana -inc
+
+Fiddler Autoresponder Filter
+_____________________________________________
+REGEX:(.*?)(\/css)?(\/|cc_)Dianamics.Happynator.(?'path')
+C:\...\2_FieldPCF_Virtual\out\controls\Happynator\$2\${path}
