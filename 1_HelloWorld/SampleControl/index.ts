@@ -44,7 +44,8 @@ export class SampleControl implements ComponentFramework.StandardControl<IInputs
      */
     public updateView(context: ComponentFramework.Context<IInputs>): void
     {
-        this.toggle.checked = context.parameters.sampleProperty.raw || false;
+        this.value = context.parameters.sampleProperty.raw ?? false;
+        this.toggle.checked = this.value;
     }
 
     /**
