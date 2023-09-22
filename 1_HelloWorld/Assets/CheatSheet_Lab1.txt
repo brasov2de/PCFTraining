@@ -3,3 +3,5 @@ npm install
 
 npm run build
 npm start watch
+
+PCF docs: https://learn.microsoft.com/en-us/power-apps/developer/component-framework/overview
