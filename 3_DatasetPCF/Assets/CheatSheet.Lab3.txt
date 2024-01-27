@@ -1,3 +1,15 @@
+Lab 3.1
+
 pac pcf init -ns Dianamics -n HappynatorGrid -t dataset -fw react
 npm install
+
+
+Lab 3.3
+pac solution init
+pac solution add-reference
+msbuild /t:restore
+
+msbuild 
+msbuild /p:configuration=Release
+
 

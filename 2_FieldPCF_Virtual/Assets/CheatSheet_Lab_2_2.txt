@@ -1,3 +1,11 @@
+
+FluentUI Icon names
+_____________________________________
+
+CheckMark
+Cancel
+
+
 starting with the project root
 create subfolder Solution
 create solution HappynatorField

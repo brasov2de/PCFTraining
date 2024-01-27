@@ -28,7 +28,7 @@ pac org select -env <id>
 
 Upload
 _____________________________________________
-pac pcf push -pp <publisher_prefix>
+pac pcf push -pp diana
 
 npm run build 
 pac pcf push -pp diana -inc

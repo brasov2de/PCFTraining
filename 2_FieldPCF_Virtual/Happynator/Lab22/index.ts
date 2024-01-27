@@ -1,10 +1,12 @@
+import { IIconToggleProps, IconToggle } from "./Components/IconToggle";
 import { IInputs, IOutputs } from "./generated/ManifestTypes";
-import { IGridProps, Grid } from "./Grid";
+
 import * as React from "react";
 
-export class HappynatorGrid implements ComponentFramework.ReactControl<IInputs, IOutputs> {
+export class Happynator implements ComponentFramework.ReactControl<IInputs, IOutputs> {
     private theComponent: ComponentFramework.ReactControl<IInputs, IOutputs>;
     private notifyOutputChanged: () => void;
+    private value : boolean |undefined;    
 
     /**
      * Empty constructor.
@@ -26,17 +28,32 @@ export class HappynatorGrid implements ComponentFramework.ReactControl<IInputs, 
         this.notifyOutputChanged = notifyOutputChanged;
     }
 
+    private onChange = (value ?: boolean) => {
+        this.value = value;
+        this.notifyOutputChanged();
+    }
+
+
+    //icons: https://developer.microsoft.com/en-us/fluentui#/styles/web/icons
     /**
      * Called when any value in the property bag has changed. This includes field values, data-sets, global values such as container height and width, offline status, control metadata values such as label, visible, etc.
      * @param context The entire property bag available to control via Context Object; It contains values as set up by the customizer mapped to names defined in the manifest, as well as utility functions
      * @returns ReactElement root react element for the control
      */
-    public updateView(context: ComponentFramework.Context<IInputs>): React.ReactElement {
-        const props: IGridProps = { 
-            dataset: context.parameters.sampleDataSet           
+    public updateView(context: ComponentFramework.Context<IInputs>): React.ReactElement {        
+        const options = context.parameters.sampleProperty.attributes?.Options || [];
+        const props: IIconToggleProps = { 
+            colorOn : options[1].Color ?? "blue", 
+            colorOff : options[0].Color ?? "yellow", 
+            labelOn : options[1].Label ?? "Happy",
+            labelOff : options[0].Label ?? "Sad",
+            iconOn : context.parameters.iconOn.raw ?? "CheckMark", 
+            iconOff : context.parameters.iconOff.raw ?? "Cancel", 
+            value : context.parameters.sampleProperty.raw || false,
+            onChange : this.onChange.bind(this) 
         };
         return React.createElement(
-            Grid, props
+            IconToggle, props
         );
     }
 
@@ -45,7 +62,9 @@ export class HappynatorGrid implements ComponentFramework.ReactControl<IInputs, 
      * @returns an object based on nomenclature defined in manifest, expecting object[s] for property marked as “bound” or “output”
      */
     public getOutputs(): IOutputs {
-        return { };
+        return { 
+            sampleProperty : this.value
+        };
     }
 
     /**
@@ -56,3 +75,8 @@ export class HappynatorGrid implements ComponentFramework.ReactControl<IInputs, 
         // Add code to cleanup control if necessary
     }
 }
+
+
+//FiddlerAutoresponder 
+//REGEX:(.*?)(\/css)?(\/|cc_)Dianamics.Happynator.(?'path')
+//2_FieldPCF_Virtual\out\controls\Happynator\$2\${path}
