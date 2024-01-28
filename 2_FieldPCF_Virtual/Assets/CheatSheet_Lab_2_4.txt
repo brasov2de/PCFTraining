@@ -1,0 +1,25 @@
+ALM
+
+
+
+starting with the project root
+create subfolder Solution
+create solution HappynatorField
+
+//open in integrated terminal
+
+ pac solution init -pn Dianamics -pp diana
+ pac solution add-reference -p ..\..\
+
+ msbuild /t:restore
+ msbuild or msbuild/p:configuration=Release
+
+! possibility to upload with
+//pac solution import --publish-changes
+
+ ! --add to your cdsproj file
+  <PropertyGroup>
+    <SolutionPackageType>Both</SolutionPackageType>    
+  </PropertyGroup>
+
+

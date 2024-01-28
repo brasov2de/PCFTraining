@@ -6,14 +6,4 @@ CheckMark
 Cancel
 
 
-starting with the project root
-create subfolder Solution
-create solution HappynatorField
-
- pac solution init -pn <PublisherName> -pp <PublisherPrefix>
- pac solution add-reference -p ..\..\
-
- msbuild /t:restore
- msbuild or msbuild/p:configuration=Release
-
 

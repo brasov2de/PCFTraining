@@ -1,0 +1,23 @@
+ALM
+
+
+
+starting with the project root
+move to subfolder Solution
+
+//open in integrated terminal
+
+pac solution clone -n PCFTraining --processCanvasApps
+ 
+ //move to subfolder PCFTraining, and open in terminal
+ pac solution add-reference -p ..\..\
+
+pac solution version -s Solution
+pac pcf version -s Manifest -p ..\..\Happynator 
+
+ msbuild /t:restore
+ msbuild or msbuild/p:configuration=Release
+
+
+
+

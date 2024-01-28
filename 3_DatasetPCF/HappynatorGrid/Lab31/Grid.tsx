@@ -1,54 +1,47 @@
-/* eslint-disable react/display-name */
 import * as React from 'react';
-import { DetailsList } from '@fluentui/react/lib/DetailsList';
+import { DetailsList, IColumn } from '@fluentui/react/lib/DetailsList';
+import { TItem, parseItems } from './Components/Utils';
 import { IconToggle } from './Components/IconToggle';
-import { parseItems } from './Components/Utils';
-
-type DataSet = ComponentFramework.PropertyTypes.DataSet;
 
 export interface IGridProps {
-  dataset: DataSet;  
+  dataset : ComponentFramework.PropertyTypes.DataSet;
 }
 
-const GridInternal = ({dataset}: IGridProps) : JSX.Element => {
+const GridInternal = ({dataset}: IGridProps) => {  
+  const [items, setItems] = React.useState<TItem[]>([]);
+  const [columns, setColumns] = React.useState<IColumn[]>([]);
 
-  const columns = dataset.columns.sort((column1, column2) => column1.order - column2.order).map((column) => {
-    const isHappyColumn = column.alias === 'happyProperty';
-    return {
-      key: column.name,
-      name: column.displayName,
-      fieldName: column.name,
-      minWidth: column.visualSizeFactor < 10 ? 100 : column.visualSizeFactor , 
-      onRender : isHappyColumn ? (item: any) => {
-        return <IconToggle 
-        colorOn='green'
-        colorOff='red'
-        iconOn='Emoji2'
-        iconOff='Sad'
-        labelOn='Happy'
-        labelOff='Sad'
-        value={item.raw.getValue(column.name)==true || item.raw.getValue(column.name)=="1" }   
-        onChange={(value) =>{
-          const record = item.raw;
-          record.setValue(column.name , value);
-          record.save();
-        }}               
-        />
+  React.useEffect(() => {
+    setItems(parseItems(dataset));
+    setColumns(dataset.columns.sort((a,b) => a.order - b.order).map((column) => {
+      const isHappyColumn = column.alias === 'happyProperty';
+      return {
+        key: column.name,
+        name: column.displayName,
+        fieldName: column.name,
+        minWidth: column.visualSizeFactor < 10 ? 100 : column.visualSizeFactor,
+        onRender: isHappyColumn ?  (item: TItem) => {
+          return <IconToggle 
+          iconOn="Emoji2"
+          iconOff="Sad"
+          colorOn="green" 
+          colorOff="red"
+          labelOn="Happy"
+          labelOff="Sad"
+          value={item.raw.getValue(column.name) == true || item.raw.getValue(column.name) == "1"}
+           />
+        } : undefined
+      }
+    }));
+  },[dataset]);
 
-      } : undefined     
-    };
-  });
-
-  const [items, setItems] = React.useState<any[]>([]);
-    React.useEffect(() => {
-        setItems(parseItems(dataset));
-    }, [dataset]);
-
-
-  return (<DetailsList 
+  return (
+   <DetailsList   
     items={items}
     columns={columns}
-  />);
-};
+   />
+  );
+}
 
 export const Grid = React.memo(GridInternal);
+
