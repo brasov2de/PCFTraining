@@ -2,7 +2,7 @@ Lab 2
 
 Harness
 _____________________________________
-pac pcf init -ns Dianamics -n Happynator -fw react
+pac pcf init -ns Dianamics -n Happynator -t field -fw react
 npm install
 
 npm run build
