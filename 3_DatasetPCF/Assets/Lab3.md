@@ -2,9 +2,13 @@
 
 ## Project Setup
 
-1. Create a virtual PCF project, of type dataset.
+1. Create an empty folder named "3_DatasetPCF"
+2. Create a virtual PCF project, of type dataset.
 ```
 pac pcf init -ns Dianamics -n HappynatorGrid -t dataset -fw react
+```
+3. Now you can install the components
+```
 npm install
 
 ```
@@ -149,7 +153,7 @@ npm run build
 
 # Lab 3.1 - The code for a dataset PCF using Fluent UI
 
-Delete the generated HalloWorld.tsx, and create a new file Grid.tsx.
+Delete the generated HalloWorld.tsx, and create a new file Grid.tsx instead.
 Define the react function component GridInternal, which we export using React.memo:
 
 ```typescript
@@ -192,7 +196,7 @@ const GridInternal = ({dataset}: IGridProps) => {
   );
 }
 ```
-Take a momment to look at the parseItems function. 
+Take a moment to look at the parseItems function. 
 We parse the *dataset.sortedRecordIds", which is an array, and for each id we take the record from **datset.records[id]**. 
 To get the if for the current record, we use the record method **getRecordId()**, and for each column we read the formatted string using **getFormattedValue**.
 
@@ -200,7 +204,8 @@ Now, let's add the column. We'll add another state for columns
 ```typescript
 const [columns, setColumns] = React.useState<IColumn[]>([]);
 ```
-and inside the useEffect we'll add the columns setter. We get all columns using the dataset.columns. If we have a column with the alias "happyProperty". You're useEffect should look now like this
+and inside the useEffect we'll add the columns setter. We get all columns using the dataset.columns. If we have a column with the alias "happyProperty". 
+Replace your useEffect with this:
 
 ```typescript
   React.useEffect(() => {
@@ -227,6 +232,9 @@ and inside the useEffect we'll add the columns setter. We get all columns using 
     }));
   },[dataset]);
 ```
+
+Don't forget to save the files.
+
 ### Index.ts
 Now we can use the Grid.tsx inside the index.ts
 All we need to do now, is to change the updateView:
@@ -244,27 +252,74 @@ All we need to do now, is to change the updateView:
 Of course we need to add the import
 ```typescript
 import { IGridProps, Grid } from "./Grid";
+//delete the HelloWorls imports here
 ```
-Now we should be able now to build and start the debug harness:
+Now we should be able now to build:
 ```
 npm run build
+```
+If the code is succesfully built, you can start the debug harness
+```
 npm start watch
 ```
+You should get 3 dummy records with Happynator column:
+![alt text](image-1.png)
 
 You can stop watch task in the terminal using "Ctrl + C"
 
 ## Upload the code component to your environment
 
-Check if your "pac cli" is using the right environment:
+Check if your "pac cli" is using the right environment. The "stars" should be set to the right auth profile, and the right environment.
+
+![alt text](image-2.png)
+
+You can also use the "pac cli" commands inside your terminal.
+```
+pac auth list
+//if needed
+pac auth create
+
+pac org who
+pac org select -env <envid>
+```
 
 Upload the debug version using 
 ```
 pac pcf push -pp diana
 ```
 
-When the upload process id done, open the browser, open the PCFTraining solution, and add the new uploaded component "Dianamics.HappynatorGrid" to your solution using "add existing" button.
+When the upload process id done, open the browser, open the PCFTraining solution inside your environment, and add the new uploaded component "Dianamics.HappynatorGrid" to your solution using "add existing" "Custom Control" button .
+![alt text](image-3.png)
+
+Add the "diana_Dianamics.HappynatorGrid to your solution
+
+![alt text](image-4.png)
 
 ## 3.1.1 Add the PCF to a subgrid in model-driven apps
+Open the form for the table PCFTraining in the maker portal. Add a subgrid on the form, taking care to not have checked "Show related records", anch choose the table "PCFTrainings"
+![alt text](image-6.png)
+
+Select the subgrid, and click on "+ Component" button.
+![alt text](image-7.png)
+To make the Happynator grid available, click in "Get more components" on the bottom the the flyout which opens there.
+
+Choose the HappynatorGrid, and click ok "Add"
+![alt text](image-8.png)
+
+Now choose the HappynatorGrid
+![alt text](image-9.png)
+
+The next flyout will us to choose the column for property-set. Choose the "IsHappy" column.
+
+![alt text](image-10.png)
+
+Allow the view switcher for all views,  the search box, and the number of rows according to the screenshot below:
+![alt text](image-11.png)
+Click on **Save and Publish**.
+Check the form for a PCFTrainig record
+![alt text](image-13.png)
+
+Notice that the standard View switcher, Commands, and Search box.
 
 ## 3.1.2 Add the PCF to a Custom Page
 
