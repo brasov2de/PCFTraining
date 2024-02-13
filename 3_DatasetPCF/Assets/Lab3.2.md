@@ -129,7 +129,7 @@ After making this change:
 - use "pac pcf push -pp diana" 
 - reopen the Custom Page
 - test the grid by clicking on isHappy icon
-- make another change on the page (for instance a label showing the HappynatorGrid1.Selected.IsHappy)
+- make another change on the page (for instance a label showing the HappynatorGrid1.Selected.IsHappy), otherwise the Custom Page editor won't save
 - save and publish the page
 - you can refresh now the app and see how it works in the final app
 
