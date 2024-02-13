@@ -66,7 +66,6 @@ Your onRender should look like this:
         } : undefined
 ```
 
-## 3.2.3
 
 Check if your component is still working
 ```
@@ -76,7 +75,7 @@ npm start
 
 Then stop the tasks inside the VSCode terminal, using Ctrl+C
 
-## 3.2.4 Upload the code
+## 3.2.3 Upload the code
 Since we want to see the change also inside the CustomPage, increment the version inside the manifest: set the version to "0.0.2"
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -90,7 +89,7 @@ Now upload the component to the environment
 pac pcf push -pp diana
 ```
 
-## 3.2.5 Test the app in model-driven apps
+## 3.2.4 Test the app in model-driven apps
 
 Open the model-driven apps, and select a row in the subgrid. 
 - Notice that the ribbon commands are changed, when a row is selected.
@@ -101,7 +100,7 @@ Open the model-driven apps, and select a row in the subgrid.
 Calling the "save()" method for a record, will refresh the dataset and recall the updateView.
 
 
-## 3.2.6 Using the selection inside Custom Pages.
+## 3.2.5 Using the selection inside Custom Pages.
 
 Inside the maker portal, edit the new created Custom Page: "DatasetCustomPage".
 
