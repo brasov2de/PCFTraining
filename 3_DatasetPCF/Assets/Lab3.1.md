@@ -316,17 +316,19 @@ Choose the HappynatorGrid, and click ok "Add"
 Now choose the HappynatorGrid
 ![alt text](Images/image-9.png)
 
-The next flyout will us to choose the column for property-set. Choose the "IsHappy" column.
+The next flyout will allow us to choose the column for property-set. Choose the "IsHappy" column.
 
 ![alt text](Images/image-10.png)
 
 Allow the view switcher for all views,  the search box, and the number of rows according to the screenshot below:
 ![alt text](Images/image-11.png)
+
 Click on **Save and Publish**.
 Check the form for a PCFTrainig record
 ![alt text](Images/image-13.png)
 
-Notice that the standard View switcher, Commands, and Search box.
+Notice that the standard View switcher, Commands, and Search box are available.
+
 The control would show all columns. You can add more columns to the view, and see the results.
 
 ## 3.1.2 Add the PCF to a Custom Page
@@ -337,11 +339,12 @@ Create a new Custom Page.
 Bind the data to the table "PCFTrainings"
 ![alt text](Images/image-14.png)
 
-Add the HappynatorGrid to your CUstom Page:
+Add the HappynatorGrid to your Custom Page:
 ![alt text](Images/image-15.png)
 
 And drag the HappynatorGrid to the page:
 ![alt text](Images/image-16.png)
+
 and add the datasource PCFTrainings
 ![alt text](Images/image-17.png)
 
@@ -361,8 +364,9 @@ Save the app
 Publish the app:
 ![alt text](Images/image-20.png)
 
-Open the model-driven app:
+Open the model-driven app for edit:
 ![alt text](Images/image-21.png)
+
 And add the page to the app
 ![alt text](Images/image-22.png)
 ![alt text](Images/image-23.png)
