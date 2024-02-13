@@ -1,5 +1,12 @@
 # Lab 3
 
+## The Purpose
+
+In this lab we will create a dataset PCF. We will bind a column to the isHappy column (boolean) and show it with the happynator conntrol.
+
+We will upload the control in the environment, and use it on a subgrid and on a Custom Page.
+
+
 ## Project Setup
 
 1. Create an empty folder named "3_DatasetPCF"
@@ -16,7 +23,7 @@ npm install
 2. Inside the generated file "HappynatorGrid" add a subfolder "Components" and add the files from this repository.
 You should have this structure:
 
-![alt text](image.png)
+![alt text](Images/image.png)
 
 The **IconToggle.tsx** is the same as used in the other labs. Take a short moment to inspect the code. It is looking like this:
 ```typescript
@@ -263,7 +270,7 @@ If the code is succesfully built, you can start the debug harness
 npm start watch
 ```
 You should get 3 dummy records with Happynator column:
-![alt text](image-1.png)
+![alt text](Images/image-1.png)
 
 You can stop watch task in the terminal using "Ctrl + C"
 
@@ -271,7 +278,7 @@ You can stop watch task in the terminal using "Ctrl + C"
 
 Check if your "pac cli" is using the right environment. The "stars" should be set to the right auth profile, and the right environment.
 
-![alt text](image-2.png)
+![alt text](Images/image-2.png)
 
 You can also use the "pac cli" commands inside your terminal.
 ```
@@ -289,92 +296,75 @@ pac pcf push -pp diana
 ```
 
 When the upload process id done, open the browser, open the PCFTraining solution inside your environment, and add the new uploaded component "Dianamics.HappynatorGrid" to your solution using "add existing" "Custom Control" button .
-![alt text](image-3.png)
+![alt text](Images/image-3.png)
 
 Add the "diana_Dianamics.HappynatorGrid to your solution
 
-![alt text](image-4.png)
+![alt text](Images/image-4.png)
 
 ## 3.1.1 Add the PCF to a subgrid in model-driven apps
 Open the form for the table PCFTraining in the maker portal. Add a subgrid on the form, taking care to not have checked "Show related records", anch choose the table "PCFTrainings"
-![alt text](image-6.png)
+![alt text](Images/image-6.png)
 
 Select the subgrid, and click on "+ Component" button.
-![alt text](image-7.png)
+![alt text](Images/image-7.png)
 To make the Happynator grid available, click in "Get more components" on the bottom the the flyout which opens there.
 
 Choose the HappynatorGrid, and click ok "Add"
-![alt text](image-8.png)
+![alt text](Images/image-8.png)
 
 Now choose the HappynatorGrid
-![alt text](image-9.png)
+![alt text](Images/image-9.png)
 
 The next flyout will us to choose the column for property-set. Choose the "IsHappy" column.
 
-![alt text](image-10.png)
+![alt text](Images/image-10.png)
 
 Allow the view switcher for all views,  the search box, and the number of rows according to the screenshot below:
-![alt text](image-11.png)
+![alt text](Images/image-11.png)
 Click on **Save and Publish**.
 Check the form for a PCFTrainig record
-![alt text](image-13.png)
+![alt text](Images/image-13.png)
 
 Notice that the standard View switcher, Commands, and Search box.
+The control would show all columns. You can add more columns to the view, and see the results.
 
 ## 3.1.2 Add the PCF to a Custom Page
 
+Create a new Custom Page.
+![alt text](Images/image-12.png)
 
-# Lab 3.2 - Select rows
-Now we'll let the component interact with the Power Apps. 
+Bind the data to the table "PCFTrainings"
+![alt text](Images/image-14.png)
 
-## 3.2.1 - Code
-Inside the Grid.tsx, we'll use the useSelection custom hook. Define the selection right below the items and columns state
-```typescript
-const GridInternal = ({dataset}: IGridProps) => {  
-  const [items, setItems] = React.useState<TItem[]>([]);
-  const [columns, setColumns] = React.useState<IColumn[]>([]);
-  const {selection, selectedCount, onItemInvoked} = useSelection(dataset);
-  //....
+Add the HappynatorGrid to your CUstom Page:
+![alt text](Images/image-15.png)
+
+And drag the HappynatorGrid to the page:
+![alt text](Images/image-16.png)
+and add the datasource PCFTrainings
+![alt text](Images/image-17.png)
+
+In the advanced pane, define the "happyProperty" as the "diana_ishappy" column:
+![alt text](Images/image-24.png)
+
+Add a label on the form and set the Text property to 
 ```
-Take a look to the useSelection hook inside the "useSelection.ts" file.
-We use the dataset method **setSelectedRecordIds(ids)** to interact with Power Apps and tell which records are selected.
-
-Inside this hook there is also the definition if **onItemInvoked**. Here we define the navigation inside model-driven apps, using the **dataset.openDatasetItem**.
-
-Back inside the **Grid.tsx** we'll the properties to the DetailsList
-```typescript
-  return (
-   <DetailsList   
-    items={items}
-    columns={columns}    
-    selection={selection}
-    selectionMode={SelectionMode.multiple}
-    onItemInvoked={onItemInvoked}
-   />
-  );
+HappynatorGrid1.Selected.Name
 ```
+Preview the app. You will see that the name of the selected record is not shown.
+![alt text](Images/image-18.png)
 
-Check if your component is still working
-```
-npm run build
-npm start
-```
+Save the app
+![alt text](Images/image-19.png)
 
-Then stop the tasks inside the VSCode terminal, using Ctrl+C
+Publish the app:
+![alt text](Images/image-20.png)
 
-## 3.2.2 Upload the code
-Since we want to see the change also inside the CustomPage, increment the version inside the manifest: set the version to "0.0.2"
-```xml
-<?xml version="1.0" encoding="utf-8" ?>
-<manifest>
-  <control namespace="Dianamics" constructor="HappynatorGrid" version="0.0.2" ...>
+Open the model-driven app:
+![alt text](Images/image-21.png)
+And add the page to the app
+![alt text](Images/image-22.png)
+![alt text](Images/image-23.png)
 
-```
-
-## 3.2.3 Using inside model-driven apps
-
-## 3.2.4 Using inside the custom page
-
-
-
-
+Save and publish the app.

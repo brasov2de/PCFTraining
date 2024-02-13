@@ -49,7 +49,7 @@ const GridInternal = ({dataset}: IGridProps) => {
     items={items}
     columns={columns}    
     selection={selection}
-    selectionMode={SelectionMode.multiple}
+ //   selectionMode={SelectionMode.multiple}
     onItemInvoked={onItemInvoked}
    />
   );
