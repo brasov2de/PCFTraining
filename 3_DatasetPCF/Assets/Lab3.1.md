@@ -186,10 +186,12 @@ const GridInternal = ({dataset}: IGridProps) => {
 export const Grid = React.memo(GridInternal);
 ```
 
-Now we'll define the items and the columns. First the items (the rows of the grid). For that define an internal react state "items". Using "useEffect" with dependency on dataset, we parse the items
+Now we'll define the items and the columns. First the items (the rows of the grid). For that define an internal react state "items" (we'll add the colunbs now too). 
+Using "useEffect" with dependency on dataset, we parse the items
 ```typescript
 const GridInternal = ({dataset}: IGridProps) => {  
   const [items, setItems] = React.useState<TItem[]>([]);  
+  const [columns, setColumns] = React.useState<IColumn[]>([]);
 
   React.useEffect(() => {
     setItems(parseItems(dataset));   
@@ -207,10 +209,7 @@ Take a moment to look at the parseItems function.
 We parse the *dataset.sortedRecordIds", which is an array, and for each id we take the record from **datset.records[id]**. 
 To get the if for the current record, we use the record method **getRecordId()**, and for each column we read the formatted string using **getFormattedValue**.
 
-Now, let's add the column. We'll add another state for columns
-```typescript
-const [columns, setColumns] = React.useState<IColumn[]>([]);
-```
+
 and inside the useEffect we'll add the columns setter. We get all columns using the dataset.columns. If we have a column with the alias "happyProperty". 
 Replace your useEffect with this:
 
