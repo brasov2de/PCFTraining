@@ -1,6 +1,6 @@
 import { cellEditorOverrides } from "./Customizer/CellEditorOverrides";
 import { cellRendererOverrides } from "./Customizer/CellRendererOverrides";
-import { PAOneGridCustomizer } from "./Customizer/types";
+import { PAOneGridCustomizer } from "./Components/types";
 import { IInputs, IOutputs } from "./generated/ManifestTypes";
 import * as React from "react";
 

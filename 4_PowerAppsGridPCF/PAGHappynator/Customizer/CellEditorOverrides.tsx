@@ -1,6 +1,6 @@
 import { Icon } from '@fluentui/react/lib/components/Icon';
 import * as React from 'react';
-import { CellEditorOverrides, CellEditorProps, GetEditorParams } from './types';
+import { CellEditorOverrides, CellEditorProps, GetEditorParams } from '../Components/types';
 import { IconToggle } from '../Components/IconToggle';
 
 
@@ -9,9 +9,8 @@ export  const cellEditorOverrides: CellEditorOverrides = {
     ["TwoOptions"]: (defaultProps: CellEditorProps, rendererParams: GetEditorParams) => {     
       const column = rendererParams.colDefs[rendererParams.columnIndex];             
       if(column.name==="diana_ishappy"){        
-        const value  = defaultProps.value;      
-       // rendererParams.onCellValueChanged(!value); //autochange value on click
-        const onChange=() =>{          
+        const value  = defaultProps.value;           
+        const onChange=(value ?: boolean) =>{          
           rendererParams.onCellValueChanged(!value);      
           rendererParams.stopEditing(false);
         }
