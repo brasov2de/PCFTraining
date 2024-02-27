@@ -8,8 +8,7 @@ export  const cellEditorOverrides: CellEditorOverrides = {
    
     ["TwoOptions"]: (defaultProps: CellEditorProps, rendererParams: GetEditorParams) => {     
       const column = rendererParams.colDefs[rendererParams.columnIndex];             
-      if(column.name==="diana_ishappy"){        
-        const value  = defaultProps.value;           
+      if(column.name==="diana_ishappy"){                  
         const onChange=(value ?: boolean) =>{          
           rendererParams.onCellValueChanged(!value);      
           rendererParams.stopEditing(false);
