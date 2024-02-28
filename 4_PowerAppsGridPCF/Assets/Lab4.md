@@ -175,7 +175,7 @@ Check that now we can switch the cell to edit mode, but we see the standard togg
 
 # CellEditor
 
-Inside the Customizer folder, create the file CellEditorOverrides.ts (beside the CellRendererOverrides.tsx)
+Inside the Customizer folder, create the file CellEditorOverrides.tsx (beside the CellRendererOverrides.tsx)
 
 ![alt text](image-8.png)
 
