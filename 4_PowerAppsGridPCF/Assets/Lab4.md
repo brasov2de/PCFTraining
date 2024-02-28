@@ -8,7 +8,7 @@ We will implement the control in "render mode" and in the "editor mode".
 
 Create a PCF project, by running the following command inside the VSCode Terminal:
 ```
-pac pcf init -ns Dianamics -n PAGHappynator -fw react
+pac pcf init -ns Dianamics -n PAGHappynator -fw react -t field
 ```
 
 Install the npm packages
