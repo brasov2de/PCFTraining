@@ -1,0 +1,13 @@
+
+.Dianamics\.HappynatorGridPlainJS tr{
+    line-height: 28px;
+}
+
+
+.Dianamics\.HappynatorGridPlainJS .selected{
+    background-color: lightsteelblue;
+}
+
+.Dianamics\.HappynatorGridPlainJS tr:hover{
+    background-color: aliceblue;
+}
