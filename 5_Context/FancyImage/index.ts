@@ -5,6 +5,8 @@ export class FancyImage implements ComponentFramework.StandardControl<IInputs, I
     private image : HTMLImageElement;
     private isZoomed : boolean = false;
     private context : ComponentFramework.Context<IInputs>;
+    private pngImage : string |null = null;
+    private svg: HTMLElement ;
     /**
      * Empty constructor.
      */
@@ -35,13 +37,16 @@ export class FancyImage implements ComponentFramework.StandardControl<IInputs, I
        this.image = document.createElement("img");     
        context.mode.trackContainerResize(true);             
        this.getResourceImagePromise("Images/smiley.jpg", "jpg").then((resource) => {
-            this.image.src = resource;
+           this.pngImage = resource;
        });
        this.image.onclick = () => {
             this.isZoomed = !this.isZoomed;
             context.mode.setFullScreen(this.isZoomed);
        }
        container.appendChild(this.image);
+
+       this.svg = document.createElement("div");
+       container.appendChild(this.svg);
     }
 
 
@@ -58,6 +63,19 @@ export class FancyImage implements ComponentFramework.StandardControl<IInputs, I
         else if(context.updatedProperties.includes("fullscreen_close")){
             this.isZoomed = false;
         }
+        if(context.parameters.image.raw==null || context.parameters.image.raw===""){
+            this.image.src = this.pngImage ?? "";
+            this.svg.style.display = "none";
+            this.image.style.display = "block";
+        }
+        else{
+            this.image.style.display = "none";
+            this.svg.style.display = "block";            
+            this.svg.innerHTML = context.parameters.image.raw;
+            this.svg.style.setProperty("--svg-fill-hover", context.parameters.hoverColor.raw ?? "red");
+            this.svg.style.setProperty("--svg-fill", context.parameters.color.raw ?? "blue");
+        }
+     
     }
 
     /**
