@@ -26,6 +26,12 @@ export class Happynator implements ComponentFramework.ReactControl<IInputs, IOut
         state: ComponentFramework.Dictionary
     ): void {
         this.notifyOutputChanged = notifyOutputChanged;
+        try{
+            context.utils.getEntityMetadata("diana_pcftraining", ["diana_ishappy"]).then(console.log);
+        }
+        catch (error){            
+            console.log(error);
+        }
     }
 
     private onChange = (value ?: boolean) => {
@@ -41,6 +47,7 @@ export class Happynator implements ComponentFramework.ReactControl<IInputs, IOut
      * @returns ReactElement root react element for the control
      */
     public updateView(context: ComponentFramework.Context<IInputs>): React.ReactElement {
+        console.log("Updated Properties", context.updatedProperties);
         const options = context.parameters.sampleProperty.attributes?.Options;
         const props: IIconToggleProps = { 
             colorOn : options?.[1].Color ?? "green", 
