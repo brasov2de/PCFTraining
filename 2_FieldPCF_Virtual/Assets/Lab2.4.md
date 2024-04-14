@@ -7,7 +7,7 @@ An easier way is to generate solutions containing the PCF. Right from VSCode
 
 To do so , create a subfolder named "HappynatorSolution" (right inside the root) and open in in the Terminal
 
-![alt text](image.png)
+![alt text](./Images24/image.png)
 
 In the terminal create the solution project (cdsproj):
 
@@ -49,7 +49,7 @@ You need to restore only once.
  ```
 
  That creates the debug solution inside the "bin\Debug" folder
- ![alt text](image-1.png)
+ ![alt text](./Images24/image-1.png)
 
 and for a production version
 ```
@@ -57,4 +57,4 @@ dotnet build --configuration Release
 ```
 Thet gereated the release solution zip:
 
-![alt text](image-2.png)
+![alt text](./Images24/image-2.png)
