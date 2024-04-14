@@ -58,3 +58,32 @@ dotnet build --configuration Release
 Thet gereated the release solution zip:
 
 ![alt text](./Images24/image-2.png)
+
+## Managed or unmanaged solution
+
+By default msbuild ir dotnet is generating the 
+- debug version as unmanaged
+- release version as managed.
+
+But you can also define what solution you want. For that you can open the cdsproj, and search for the copmmented <PropertyGroup> containing <SolutionPackageType>
+```xml
+  <!-- 
+    Solution Packager overrides, un-comment to use: SolutionPackagerType (Managed, Unmanaged, Both)
+    Solution Localization Control, if you want to enabled localization of your solution, un-comment SolutionPackageEnableLocalization and set the value to true. - Requires use of -loc flag on Solution Clone or Sync
+  -->
+  <!--
+  <PropertyGroup>
+    <SolutionPackageType>Managed</SolutionPackageType>
+    <SolutionPackageEnableLocalization>false</SolutionPackageEnableLocalization>
+  </PropertyGroup>
+  -->
+```
+
+So you can add the PropertyGroup like you like (Both will generate unmanaged and manage)
+```xml
+  <PropertyGroup>
+    <SolutionPackageType>Both</SolutionPackageType>    
+  </PropertyGroup>
+```
+Now when you run msbuild or dotnet you can also get the unmanaged production version:
+![alt text](./Images24/image-4.png)
