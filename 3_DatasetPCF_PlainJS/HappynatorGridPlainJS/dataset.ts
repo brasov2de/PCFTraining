@@ -1,6 +1,9 @@
 
 type DataSet = ComponentFramework.PropertyTypes.DataSet;
-import { getSortedColumnsOnView, renderHappyCell, renderRowSelector, renderTableHeader } from "./Components/helper";
+import { renderRow } from "./Components/row";
+import { renderHappyCell } from "./Components/iconToggle";
+import { getSortedColumnsOnView, renderTableHeader } from "./Components/table";
+
 
 
 export function renderGrid(table: HTMLTableElement, dataset: DataSet): void {        
@@ -13,22 +16,14 @@ export function renderGrid(table: HTMLTableElement, dataset: DataSet): void {
     const tbody = table.createTBody();
 
     dataset.sortedRecordIds.forEach((id, i) => {
-        let row = tbody.insertRow(i);
-        const record = dataset.records[id];
-        const isSelected = selectedRecordIds.includes(id);
-        if(isSelected) {
-            row.classList.add("selected");
-        }
 
-        row.onclick = () => {           
-            dataset.setSelectedRecordIds(isSelected ? [] : [id]);
-        }   
-        row.ondblclick = (ev) => {
-            dataset.openDatasetItem(record.getNamedReference());
-        }     
-        renderRowSelector(row,  isSelected  , (selected) => {
-           dataset.setSelectedRecordIds(isSelected ? [] : [id]);
-        });
+        const record = dataset.records[id];
+        const row = renderRow({
+            id, tbody, index: i, 
+            isSelected: selectedRecordIds.includes(id), 
+            onSelectRow: (ids) => dataset.setSelectedRecordIds(ids),
+            onDblClick: () => dataset.openDatasetItem(record.getNamedReference())
+        });        
         sortedColumns.forEach((column, j) => {
             let cell = row.insertCell(j + 1);
             cell.style.width = column.visualSizeFactor < 10 ? "100px" : column.visualSizeFactor + "px";
