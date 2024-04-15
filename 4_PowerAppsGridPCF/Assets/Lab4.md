@@ -33,7 +33,7 @@ Take the content of the file from this repository: [Types.ts](../PAGHappynator/C
 
 You should have this structure:
 
-![alt text](image.png)
+![alt text](./Images/image.png)
 
 
 Build the code until now. This will generate also the changed types from the manifest:
@@ -110,30 +110,30 @@ pac pcf push -pp diana
 ## Customizing on the customizer control
 
 1. Open the Solution "PCFTraining" and add the new uploaded PCF to the solution:
-![alt text](image-1.png)
+![alt text](./Images/image-1.png)
 Pick the diana_Dianamics.PAGHappynator from the list:
-![alt text](image-2.png)
+![alt text](./Images/image-2.png)
 
 Select the solution and "Switch to classic" (we'll register it on the table pcf_training).
 In the classic customizing, choose the "Entities", open the "PCFTraining", and then the tab "Controls". Click on the "Power Apps grid control" control, and scroll the properties all the way down, until you find the "Customizer Control":
-![alt text](image-3.png)
+![alt text](./Images/image-3.png)
 
 Paste the text "diana_Dianamics.PAGHappynator" inside the "static value" for the "Customizer Control":
-![alt text](image-4.png)
+![alt text](./Images/image-4.png)
 
 Now we're all set: Save and the Publish your changes.
 
 ## View the Happynator cell renderer
 
 Now we can play the "PCFTrainingApp":
-![alt text](image-5.png)
+![alt text](./Images/image-5.png)
 
 For the "PCFTraining" table, we can switch now to "Show As", and then "Power Apps grid control":
-![alt text](image-6.png)
+![alt text](./Images/image-6.png)
 
 After a refresh, you should be able to see the Happynator control inside the Power Apps Grid.
 
-![alt text](image-7.png)
+![alt text](./Images/image-7.png)
 
 Right now we can edit only the name; a click on the IsHappy column won't have any effect. In the next step we'll implement the editor.
 
@@ -170,14 +170,14 @@ pac pcf push -pp diana
 ```
 
 Check that now we can switch the cell to edit mode, but we see the standard toggle as an editor:
-![alt text](image-9.png)
+![alt text](./Images/image-9.png)
 
 
 # CellEditor
 
 Inside the Customizer folder, create the file CellEditorOverrides.tsx (beside the CellRendererOverrides.tsx)
 
-![alt text](image-8.png)
+![alt text](./Images/image-8.png)
 
 Start with the cellEditor definition
 ```typescript
@@ -229,4 +229,4 @@ You can push the changes to the environment now:
 pac pcf push -pp diana
 ```
 Refresh the grid, and check that a click on the "IsHappy" column is changing the value. We can click several times on the same control, the cell is makered as editable (blue border)
-![alt text](image-10.png)
+![alt text](./Images/image-10.png)
