@@ -70,28 +70,28 @@ Notice that now we can select rows by clicking on it, and as soon a row is selec
 
 Unselected:
 
-![alt text](image-1.png)
+![alt text](./Images32/image-1.png)
 
 Selected:
 
-![alt text](image-2.png)
+![alt text](./Images32/image-2.png)
 
 Also, by doubleclicking a row, the corresponsing form will be opened. (Sometimes is not that easy to notice, since we navigate to the same form, just for another record)
 
 Also, by simply clicking on the icon toggle, the value changes and is saved
-![alt text](image.png)
+![alt text](./Images32/image.png)
 
 ## Test inside Custom Pages
 
 We need to edit the "DatasetPCFPage":
 
-![alt text](image-3.png)
+![alt text](./Images32/image-3.png)
 
 Since the PCF version was incremented, we get the chance to update the PCF( choose Update):
-![alt text](image-4.png)
+![alt text](./Images32/image-4.png)
 
 Place a label on the Page, and set the Text porperty to "HappynatorGridPlainJS1.Selected.Name" As soon we select a record now, we can see the label changing.
-![alt text](image-5.png)
+![alt text](./Images32/image-5.png)
 
 To navigate to the record, we can place a button on the form, and set the OnSelect to 
 
@@ -99,7 +99,7 @@ To navigate to the record, we can place a button on the form, and set the OnSele
 Navigate(HappynatorGridPlainJS1.Selected)
 ```
 
-![alt text](image-6.png)
+![alt text](./Images32/image-6.png)
 
 Now we can save and publish the page and check what happens when we select a record , or when we click on the "Open" Button.
 
