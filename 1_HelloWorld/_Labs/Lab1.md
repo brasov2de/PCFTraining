@@ -18,7 +18,7 @@ pac pcf init -ns Dianamics -n SampleControl -t field
 
 This will create a "pcfproj" and a structure like this
 
-![alt text](image.png)
+![alt text](./Images/image.png)
 
 Get some time to go through the generated files.
 
@@ -40,7 +40,7 @@ npm run build
 This will generate the TypeScript definition for the PCF properties. You can find them inside the "SampleControl\generated\ManifestTypes.d.ts".
 It will also bundle your code. You can have a look inside the "out" folder:
 
-![alt text](image-1.png)
+![alt text](./Images/image-1.png)
 
 ## PCF Implementation
 
@@ -85,7 +85,7 @@ npm start watch
 ```
 This will start the debug harness, where we can check if the component is working.
 You can set the "Width" and "Height", and change the value of the property (Value: True or False), to see that the component is showing it.
-![alt text](image-2.png)
+![alt text](./Images/image-2.png)
 
 
 But we see that when we change the value using the checkbox we've created, there is not output from the PCF.
@@ -128,7 +128,7 @@ Replace the return with the following:
 ```
 
 Now we can get back to the debug harness, and check that by clicking on the checkbox, the harness is showing the "Data Outputs" with the values we've passed outside the PCF:
-![alt text](image-3.png)
+![alt text](./Images/image-3.png)
 
 ## Cleanup
 
