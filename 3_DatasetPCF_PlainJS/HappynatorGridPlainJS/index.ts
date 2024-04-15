@@ -2,8 +2,7 @@ import { IInputs, IOutputs } from "./generated/ManifestTypes";
 import { renderGrid } from "./dataset";
 
 export class HappynatorGridPlainJS implements ComponentFramework.StandardControl<IInputs, IOutputs> {
-
-    private context: ComponentFramework.Context<IInputs>;
+    
     private table: HTMLTableElement;
     /**
      * Empty constructor.
@@ -23,8 +22,7 @@ export class HappynatorGridPlainJS implements ComponentFramework.StandardControl
      */
     public init(context: ComponentFramework.Context<IInputs>, notifyOutputChanged: () => void, state: ComponentFramework.Dictionary, container:HTMLDivElement): void
     {
-        // Add control initialization code
-        this.context = context;
+        // Add control initialization code        
         this.table = document.createElement("table");        
         container.appendChild(this.table);
     }
