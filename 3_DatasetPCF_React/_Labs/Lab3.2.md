@@ -110,28 +110,18 @@ Notice the dialog, about updating the PCF
 Preview the page. When you select a record in the grid, you can see the label filled with the Name of the SelectedRecord (as defined in Lab 3.1)
 ![alt text](Images/image-26.png)
 
-**Note**
-As of today, working with a boolean in a dataset PCF is different in model-drriven apps and custom pages (canvas app).
-The custom page won't save. 
-But you can change the onChange callback to this in order to get the dataset to save your changes in CustomPages
-```typescript
-  onChange={(value) => {
-            const record = item.raw;
-            //(record as any).setValue(column.name, value);
-            //for CustomPage, instead of value use {Id: value}
-            (record as any).setValue(column.name, {Id: value})
-            (record as any).save();
+## Disclaimer for saving inside Custom Page
 
-          }}
+Given the docs, the saving using the dataset save method is GA in model-driven apps, but experimental in Custom Pages.
+
+I've notices that saving works if we set the value as "{Id: value}" instead of "value" as we did in the code. But if we change that won't work inside model-driven apps anymore. 
+
+```TypeScript
+//(record as any).setValue(column.name, value)
+(record as any).setValue(column.name, {Id: value})
 ```
-After making this change:
-- increment the PCF manifext version
-- use "pac pcf push -pp diana" 
-- reopen the Custom Page
-- test the grid by clicking on isHappy icon
-- make another change on the page (for instance a label showing the HappynatorGrid1.Selected.IsHappy), otherwise the Custom Page editor won't save
-- save and publish the page
-- you can refresh now the app and see how it works in the final app
+
+Hopefully this will be alligned until the GA for Custom Pages/Canvs Apps. Until then, we could implement it for CustomPages using webAPI. But that's not a part of this lab.
 
 
 
