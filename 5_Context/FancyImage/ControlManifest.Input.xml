@@ -19,9 +19,9 @@
     </external-service-usage>
     <!-- property node identifies a specific, configurable piece of data that the control expects from CDS -->
     <property name="sampleProperty" display-name-key="Property_Display_Key" description-key="Property_Desc_Key" of-type="SingleLine.Text" usage="bound" required="true" />
-    <property name="image" display-name-key="Image" description-key="Image" of-type="SingleLine.Text" usage="input" required="true" />
-    <property name="hoverColor" display-name-key="HoverColor" description-key="HoverColoir" of-type="SingleLine.Text" usage="input" required="true" />
-    <property name="color" display-name-key="HoverColor" description-key="HoverColoir" of-type="SingleLine.Text" usage="input" required="true" />
+    <property name="image" display-name-key="Image" description-key="Image" of-type="SingleLine.Text" usage="input" required="false" />
+    <property name="hoverColor" display-name-key="HoverColor" description-key="HoverColoir" of-type="SingleLine.Text" usage="input" required="false" />
+    <property name="color" display-name-key="HoverColor" description-key="HoverColoir" of-type="SingleLine.Text" usage="input" required="false" />
     <!--
       Property node's of-type attribute can be of-type-group attribute.
       Example:
