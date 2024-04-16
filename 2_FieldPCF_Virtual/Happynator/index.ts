@@ -50,12 +50,12 @@ export class Happynator implements ComponentFramework.ReactControl<IInputs, IOut
         console.log("Updated Properties", context.updatedProperties);
         const options = context.parameters.sampleProperty.attributes?.Options;
         const props: IIconToggleProps = { 
-            colorOn : options?.[1].Color ?? "green", 
-            colorOff : options?.[0].Color ?? "red", 
+            colorOn : options?.[1].Color ?? "blue", 
+            colorOff : options?.[0].Color ?? "yellow", 
             labelOn : options?.[1].Label ?? "Happy",
             labelOff : options?.[0].Label ?? "Sad",
-            iconOn : context.parameters.iconOn.raw ?? "Emoji2", 
-            iconOff : context.parameters.iconOff.raw ?? "Sad", 
+            iconOn : context.parameters.iconOn.raw ?? "CheckMark", 
+            iconOff : context.parameters.iconOff.raw ?? "Cancel", 
             value : context.parameters.sampleProperty.raw || false,
             onChange : this.onChange.bind(this) 
         };
