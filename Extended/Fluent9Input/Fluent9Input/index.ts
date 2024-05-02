@@ -39,7 +39,11 @@ export class Fluent9Input implements ComponentFramework.ReactControl<IInputs, IO
      */
     public updateView(context: ComponentFramework.Context<IInputs>): React.ReactElement {
         this.value = context.parameters.sampleProperty.raw ?? "";
-        const props: TextInputProps = { value: this.value, onChange: this.onChange.bind(this)};
+        const props: TextInputProps = { 
+            value: this.value, 
+            onChange: this.onChange.bind(this),
+            theme: context.fluentDesignLanguage?.tokenTheme
+        };
         return React.createElement(
             TextInput, props
         );
