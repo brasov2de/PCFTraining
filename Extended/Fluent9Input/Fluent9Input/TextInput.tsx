@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { debounce } from 'lodash';
 import { FluentProvider, Input, InputOnChangeData, InputProps, Theme } from '@fluentui/react-components';
 
 export interface TextInputProps {
@@ -8,16 +7,43 @@ export interface TextInputProps {
     theme ?: Theme;
 }
 
-export const TextInput: React.FC<TextInputProps> = ({ value, onChange, theme }) => {    
-    //using lodash debounce to delay the onChange event until the user stopps typing
-    const handleChange : InputProps["onChange"] = debounce((event: React.ChangeEvent<HTMLInputElement>, data: InputOnChangeData) => {
-        console.log("TextInput handleChange");
-        onChange(data.value);
-    }, 500);
+export const useDebounce = (value: string, delay: number) => {
+    
+    const [debouncedValue, setDebouncedValue] = React.useState(value);
+  
+    React.useEffect(() => {
+      const handler = setTimeout(() => {
+        setDebouncedValue(value);
+      }, delay);
+  
+      return () => {clearTimeout(handler);};
+    }, [value, delay]);
+  
+    return debouncedValue;
+  };
 
+export const TextInput: React.FC<TextInputProps> = ({ value, onChange, theme }) => {    
+    const [val, setVal] = React.useState<string>(value);
+    const debouncedValue = useDebounce(val, 500);
+    //using lodash debounce to delay the onChange event until the user stopps typing
+    
+    const handleChange : InputProps["onChange"] = (event: React.ChangeEvent<HTMLInputElement>, data: InputOnChangeData) => {
+        console.log("TextInput handleChange");
+        setVal(data.value);
+    }
+
+    React.useEffect(() => {        
+        onChange(debouncedValue);
+    }, [debouncedValue]);
+
+    React.useEffect(() => {
+        setVal(value);
+    }, [value]);
+
+    
     return (        
         <FluentProvider theme={theme}>
-        <Input type="text" defaultValue={value} onChange={handleChange} />        
+        <Input type="text" value={val} onChange={handleChange} />        
         </FluentProvider>
     );
 };
