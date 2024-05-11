@@ -2,7 +2,7 @@ import { IInputs, IOutputs } from "./generated/ManifestTypes";
 
 export class Hello implements ComponentFramework.StandardControl<IInputs, IOutputs> {
 
-    private colors = ["red", "orange", "pink", "darkred", "purple"];
+    private colors = ["red", "#C0392B", "pink", "#884EA0", "purple", "#1F618D","#148F77","#AF601A","#616A6B"];
     private color = "red";
     private container: HTMLDivElement;
 
