@@ -4,7 +4,7 @@ import { IHierarchyRecord, ISpecialStyle } from './Types';
 import Card from './Card';
 
 export interface IHierarchyAppProps {   
-    //navigation: ComponentFramework.Navigation;
+    navigation: ComponentFramework.Navigation;
     dataset: ComponentFramework.PropertyTypes.DataSet;    
     parentEntityId: string;    
     allocatedWidth: number;
@@ -20,7 +20,8 @@ const fallbackStyles = {
     color : "black"
 }
 
-export const HierarchyApp = ({dataset, 
+export const HierarchyApp = ({navigation,
+            dataset, 
             parentEntityId,  
             allocatedWidth, icon, backgroundColor, color, cardWidth}: IHierarchyAppProps) : React.JSX.Element  => {
     const width = allocatedWidth ? `${allocatedWidth}px` : "100%";    
@@ -35,8 +36,7 @@ export const HierarchyApp = ({dataset,
     })
 
     React.useEffect(() => {
-        if(dataset.filtering.getFilter()==null && parentEntityId!=null) {                    
-            dataset.filtering.clearFilter();
+        if(dataset.filtering.getFilter()==null && parentEntityId!=null) {                                
 
             dataset.filtering.setFilter({filterOperator: 0, conditions: [{
                 conditionOperator: 76 //under
@@ -55,10 +55,10 @@ export const HierarchyApp = ({dataset,
 
     const sStyle =  {icon: icon ?? "OpenFolderHorizontal", backgroundColor: backgroundColor ?? "transparent", color: color ?? "black"}  ?? fallbackStyles;    
 
-/*    const clickCallback = (id: string, entityName: string) => {
+    const clickCallback = (id: string, entityName: string) => {
        navigation.openForm({entityName: entityName, entityId: id, openInNewWindow: true, width: allocatedWidth ?? 1000, windowPosition: 1});       
     }
-    */
+    
 
     function renderReccursive(node : IHierarchyRecord) : React.JSX.Element {
         return (<TreeNode 
@@ -71,7 +71,7 @@ export const HierarchyApp = ({dataset,
                             width={cardWidth}
                             id={node.id}
                             entityName={node.entityName}
-                           // onClick={clickCallback}
+                            onClick={clickCallback}
                             ></Card>} >
                     {
                     node.children.map((child : IHierarchyRecord) => {
@@ -99,7 +99,7 @@ export const HierarchyApp = ({dataset,
         lineHeight="50px"               
         lineBorderRadius={'10px'}>
             {
-                root && dataset.loading===false && dataset.filtering!=null
+                root
                 ? root.children.map((child : IHierarchyRecord) => {
                     const specialStyles = sStyle ?? fallbackStyles;
                     return renderReccursive(child);

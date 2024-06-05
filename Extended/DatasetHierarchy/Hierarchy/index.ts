@@ -36,7 +36,7 @@ export class HierarchyChart implements ComponentFramework.ReactControl<IInputs, 
     {
          const props : IHierarchyAppProps = {
             //webAPI: context.webAPI,
-            //navigation: context.navigation,
+            navigation: context.navigation,
             parentEntityId: context.parameters.entityId.raw ?? "",         
             dataset: context.parameters.dataset,
             allocatedWidth : context.mode.allocatedWidth, 

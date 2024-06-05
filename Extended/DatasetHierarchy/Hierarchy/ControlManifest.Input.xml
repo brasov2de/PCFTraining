@@ -20,11 +20,10 @@
     <!-- dataset node represents a set of entity records on CDS; allow more than one datasets -->
     <data-set name="dataset" display-name-key="Dataset_Display_Key" cds-data-set-options="displayCommandBar:true;displayViewSelector:true;displayQuickFind:true">      
       <property-set name="lookupToParent" display-name-key="LookupToParent" description-key="LookupToParent" of-type="Lookup.Simple" usage="bound" required="true" />      
-       <property-set name="title" display-name-key="Title " description-key="Title" of-type="SingleLine.Text" usage="bound" required="true" />
+      <property-set name="title" display-name-key="Title " description-key="Title" of-type="SingleLine.Text" usage="bound" required="true" />
       <property-set name="subtitle" display-name-key="Subtitle" description-key="SubTitle" of-type="SingleLine.Text" usage="bound" />
     </data-set>
     <property name="entityId" display-name-key="EntityId" description-key="EntityId" of-type="SingleLine.Text" usage="input" required="true" />    
-
     <property name="Icon" display-name-key="The icon" description-key="" of-type="SingleLine.Text" usage="input" />
     <property name="BackgroundColor" display-name-key="The background color" description-key="" of-type="SingleLine.Text" usage="input" /> 
     <property name="Color" display-name-key="The color" description-key="" of-type="SingleLine.Text" usage="input" />    
