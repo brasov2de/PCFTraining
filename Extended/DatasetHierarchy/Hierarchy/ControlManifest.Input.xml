@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<manifest>
+  <control namespace="Dianamics" constructor="HierarchyChart" version="0.0.1" display-name-key="HierarchyChart" description-key="Hierarchy Chart description" control-type="virtual" >
+    <!--external-service-usage node declares whether this 3rd party PCF control is using external service or not, if yes, this control will be considered as premium and please also add the external domain it is using.
+    If it is not using any external service, please set the enabled="false" and DO NOT add any domain below. The "enabled" will be false by default.
+    Example1:
+      <external-service-usage enabled="true">
+        <domain>www.Microsoft.com</domain>
+      </external-service-usage>
+    Example2:
+      <external-service-usage enabled="false">
+      </external-service-usage>
+    -->
+    <external-service-usage enabled="false">
+      <!--UNCOMMENT TO ADD EXTERNAL DOMAINS
+      <domain></domain>
+      <domain></domain>
+      -->
+    </external-service-usage>
+    <!-- dataset node represents a set of entity records on CDS; allow more than one datasets -->
+    <data-set name="dataset" display-name-key="Dataset_Display_Key" cds-data-set-options="displayCommandBar:true;displayViewSelector:true;displayQuickFind:true">      
+      <property-set name="lookupToParent" display-name-key="LookupToParent" description-key="LookupToParent" of-type="Lookup.Simple" usage="bound" required="true" />      
+       <property-set name="title" display-name-key="Title " description-key="Title" of-type="SingleLine.Text" usage="bound" required="true" />
+      <property-set name="subtitle" display-name-key="Subtitle" description-key="SubTitle" of-type="SingleLine.Text" usage="bound" />
+    </data-set>
+    <property name="entityId" display-name-key="EntityId" description-key="EntityId" of-type="SingleLine.Text" usage="input" required="true" />    
+
+    <property name="Icon" display-name-key="The icon" description-key="" of-type="SingleLine.Text" usage="input" />
+    <property name="BackgroundColor" display-name-key="The background color" description-key="" of-type="SingleLine.Text" usage="input" /> 
+    <property name="Color" display-name-key="The color" description-key="" of-type="SingleLine.Text" usage="input" />    
+    <property name="CardWidth" display-name-key="The width of the cards" description-key="" of-type="Whole.None" usage="input" />
+    
+    <resources>
+      <code path="index.ts" order="1"/>
+      <css path="css/styles.css" order="1" />
+      <!-- UNCOMMENT TO ADD MORE RESOURCES
+      <css path="css/Hierarchy.css" order="1" />
+      <resx path="strings/Hierarchy.1033.resx" version="1.0.0" />
+      -->
+       <platform-library name="React" version="16.8.6" />
+      <platform-library name="Fluent" version="8.29.0" />
+    </resources>
+    <!-- UNCOMMENT TO ENABLE THE SPECIFIED API
+    <feature-usage>
+      <uses-feature name="Device.captureAudio" required="true" />
+      <uses-feature name="Device.captureImage" required="true" />
+      <uses-feature name="Device.captureVideo" required="true" />
+      <uses-feature name="Device.getBarcodeValue" required="true" />
+      <uses-feature name="Device.getCurrentPosition" required="true" />
+      <uses-feature name="Device.pickFile" required="true" />
+      <uses-feature name="Utility" required="true" />
+      <uses-feature name="WebAPI" required="true" />
+    </feature-usage>
+    -->
+  </control>
+</manifest>
