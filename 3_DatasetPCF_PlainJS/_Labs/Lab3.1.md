@@ -56,21 +56,16 @@ Inside the "init" function create the table element and add it to the container:
 ## dataset.ts
 
 Now let's create a separate file with the table render function. Create a file "dataset.ts" near the "index.ts" (so inside the HappynatorGridPlainJS).
-There we'll create a function renderGrid:
+There we'll create a function renderGrid. 
+Inside the function, we start with the creation of the header. For that we'll grab the columns, and sort them. Then we'll create the table body.
+Then we loop through the ids of the dataset, and get the record. At the end, we'll add the tbody to the created table.
+Add this code inside your **dataset.ts** (and let the VSCode add the imports for you):
+
 
 ```TypeScript
 type  DataSet = ComponentFramework.PropertyTypes.DataSet;
 export function renderGrid(table: HTMLTableElement, dataset: DataSet): void {      
-
-}
-```
-
-Inside the function, we start with the creation of the header. For that we'll grab the columns, and sort them. Then we'll create the table body.
-Then we loop through the ids of the dataset, and get the record. At the end, we'll add the tbody to the created table.
-Add this code
-Include this code inside renderGrid (And let the VSCode add the imports for you):
-```TypeScript
-    if(dataset.loading) return;
+     if(dataset.loading) return;
     const sortedColumns = getSortedColumnsOnView(dataset.columns);   
     renderTableHeader(table, sortedColumns.map(c => c.displayName));
 
@@ -82,7 +77,10 @@ Include this code inside renderGrid (And let the VSCode add the imports for you)
        
     });
     table.appendChild(tbody);
+}
 ```
+
+
 
 To create the row, we'll create the table row, add the row selector. We'll implement the selection in the lab 3.2.
 For that, replace the comment "//we'll create a table row for each record" with 
