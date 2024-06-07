@@ -22,13 +22,13 @@ export function renderTableHeader(table: HTMLTableElement, columnDisplayNames : 
 
 
 export function getSortedColumnsOnView(columns: ComponentFramework.PropertyHelper.DataSetApi.Column[]): ComponentFramework.PropertyHelper.DataSetApi.Column[] {    
-    const columns1 = columns.filter((columnItem) => {
+   /* const columns1 = columns.filter((columnItem) => {
             // some column are supplementary and their order is not > 0
             return columnItem.order >= 0;            
         });
-
+*/
     // Sort those columns so that they will be rendered in order
-    return columns1.sort((a, b) => {
+    return columns.sort((a, b) => {
         return a.order - b.order;
     });
 }
