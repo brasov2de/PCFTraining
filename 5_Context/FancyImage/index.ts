@@ -38,6 +38,7 @@ export class FancyImage implements ComponentFramework.StandardControl<IInputs, I
        context.mode.trackContainerResize(true);             
        this.getResourceImagePromise("Images/smiley.jpg", "jpg").then((resource) => {
            this.pngImage = resource;
+           this.image.src = this.pngImage ?? "";
        });
        this.image.onclick = () => {
             this.isZoomed = !this.isZoomed;
