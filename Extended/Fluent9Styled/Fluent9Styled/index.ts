@@ -3,6 +3,7 @@ import { webLightTheme } from "@fluentui/react-components";
 import { IInputs, IOutputs } from "./generated/ManifestTypes";
 import { HelloWorld, IHelloWorldProps } from "./HelloWorld";
 import * as React from "react";
+import { HelloWorldCombobox } from "./HelloWorldCombobox";
 
 export class Fluent9Styled implements ComponentFramework.ReactControl<IInputs, IOutputs> {
     private notifyOutputChanged: () => void;
@@ -41,7 +42,7 @@ export class Fluent9Styled implements ComponentFramework.ReactControl<IInputs, I
             isCanvasApp: context.parameters.isCanvas?.raw == "YES"
         };
         return React.createElement(
-            HelloWorld, props
+            HelloWorldCombobox, props
         );
     }
 

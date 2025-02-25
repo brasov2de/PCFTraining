@@ -3,7 +3,7 @@ import {Combobox, Option, FluentProvider, Input, Theme, makeStyles} from '@fluen
 
 
 
-export interface IHelloWorldProps {
+export interface IHelloWorldComboboxProps {
   name?: string;
   isDisabled: boolean, 
   theme ?: Theme
@@ -16,7 +16,7 @@ const useStyles = makeStyles({
   }
 })
 
-export const HelloWorld: React.FC<IHelloWorldProps> = ({ name, isDisabled, theme, isCanvasApp }) => {
+export const HelloWorldCombobox: React.FC<IHelloWorldComboboxProps> = ({ name, isDisabled, theme, isCanvasApp }) => {
   const styles = useStyles();
 
   const myTheme = isDisabled && isCanvasApp===false
@@ -29,15 +29,36 @@ export const HelloWorld: React.FC<IHelloWorldProps> = ({ name, isDisabled, theme
     : theme
   return (    
     <FluentProvider theme={myTheme} className={styles.root} >
-      <Input
+      {!isDisabled || isCanvasApp === true
+        ? <Combobox
+            //value={name}          
+            appearance='filled-darker'
+            className={styles.root}
+            readOnly={isDisabled}
+            disabled={isDisabled && isCanvasApp===true}          
+          >          
+            <Option >Test</Option>        
+          </Combobox>
+      : <Input
           value={name}          
           appearance='filled-darker'
           className={styles.root}
-          readOnly={isDisabled}
-          disabled={isDisabled && isCanvasApp===true}
-        />        
+          readOnly={isDisabled}        
+        />  
+      }
+        
     </FluentProvider>
     );
   
 };
 
+/*
+
+<Input
+          value={name}          
+          appearance='filled-darker'
+          className={styles.root}
+          readOnly={isDisabled}
+          disabled={isDisabled && isCanvasApp===true}
+        />
+        */
