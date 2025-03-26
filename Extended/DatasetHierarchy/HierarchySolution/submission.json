@@ -1,0 +1,29 @@
+{
+  "modelVersion": "1.0.0.0",
+  "sourcePortal": 526430000,
+  "operation": "CreateOrUpdate",
+  "businessJustification": "Business Justification",
+  "publisherDetails": {
+    "publisherId": "Dianamics",
+    "publisherDisplayName": "Dianamics"
+  },
+  "catalogItemDefinition": {
+    "id": "Tree Hierarchy Test",
+    "displayName": "Tree Hierarchy Test",
+    "description": "Tree Test",    
+    "offer": {
+      "type": "Application",
+      "deploymentType": "Normal",
+      "engineeringName": {
+        "firstName": "Diana",
+        "lastName": "Birkelbach",
+        "email": "diana.birkelbach@orbis.de"        
+      },
+      "supportName": {
+        "firstName": "Diana",
+        "lastName": "Birkelbach",
+        "email": "diana.birkelbach@orbis.de"
+      }
+    }
+  }
+}
